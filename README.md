@@ -32,3 +32,22 @@ do-what-it-says
     
 
     MAKE A FUNCTION FOR DO WHAT IT SAYS WITH A SWITCH IN IT
+
+
+
+     { offers: [ [Object] ],
+    venue:
+     { name: 'The Plowright Theatre',
+       country: 'United Kingdom',
+       region: '',
+       city: 'Scunthorpe',
+       latitude: '53.5883217',
+       longitude: '-0.6503109' },
+    datetime: '2020-01-19T19:30:00',
+    on_sale_datetime: '2019-05-17T10:30:00',
+    description: '',
+    lineup: [ 'The' ],
+    id: '1015128679',
+    artist_id: '44916',
+    url:
+     'https://www.bandsintown.com/e/1015128679?app_id=codingbootcamp&came_from=267&utm_medium=api&utm_source=public_api&utm_campaign=event' } ]
