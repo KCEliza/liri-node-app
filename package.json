@@ -1,7 +1,7 @@
 {
   "name": "liri-node-app",
   "version": "1.0.0",
-  "description": "",
+  "description": "concert-this\r     This will search the Bands in Town Artist Events API (\"https://rest.bandsintown.com/artists/\" + artist + \"/events?app_id=codingbootcamp\") for an artist and render the following information about each event to the terminal:\r     Name of the venue\r     Venue location\r     Date of the Event (use moment to format this as \"MM/DD/YYYY\")\r spotify-this-song\r     Artist(s)\r     The song's name\r     A preview link of the song from Spotify\r     The album that the song is from\r     If no song is provided then your program will default \r     to \"The Sign\" by Ace of Base.\r movie-this\r     * Title of the movie.\r     * Year the movie came out.\r     * IMDB Rating of the movie.\r     * Rotten Tomatoes Rating of the movie.\r     * Country where the movie was produced.\r     * Language of the movie.\r     * Plot of the movie.\r     Actors in the movie.\r     If the user doesn't type a movie in, \r     the program will output data for the movie 'Mr. Nobody.'\r do-what-it-says\r     Using the fs Node package, LIRI will take the \r     text inside of random.txt and then use it to call one of LIRI's commands.\r     It should run spotify-this-song for \"I Want it\r     That Way,\" as follows the text in random.txt.\r     Edit the text in random.txt to test out the feature\r     for movie-this and concert-this.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/KCEliza/liri-node-app/issues"
   },
-  "homepage": "https://github.com/KCEliza/liri-node-app#readme"
+  "homepage": "https://github.com/KCEliza/liri-node-app#readme",
+  "dependencies": {
+    "axios": "^0.19.0"
+  }
 }

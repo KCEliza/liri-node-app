@@ -29,3 +29,6 @@ do-what-it-says
     That Way," as follows the text in random.txt.
     Edit the text in random.txt to test out the feature
     for movie-this and concert-this.
+    
+
+    MAKE A FUNCTION FOR DO WHAT IT SAYS WITH A SWITCH IN IT
