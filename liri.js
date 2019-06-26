@@ -7,13 +7,13 @@ var userInput = process.argv[2];
 
 //Function for concert-this
 function concert() {
-    var artist = process.argv[3].slice("+");
-    var queryUrl = "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp"
+    var concert = process.argv.slice(3).join("+");
+    var queryUrl = "https://rest.bandsintown.com/artists/" + concert + "/events?app_id=codingbootcamp"
     axios.get(queryUrl).then(
         function (response) {
             console.log(response.data);
             var data = response.data
-            if(artist){
+            if(concert){
                 console.log(`Name of the Venue: ${data.offers[2]} Venue Location: ${data.offers[5]}, ${data.offers[3]} Data: ${data.offers[8]}`)
             }
         })
@@ -29,20 +29,14 @@ function spotify() {
 
 
 function movie() {
-    var movieTitle = process.argv[3].slice("+");
-    var queryUrl = "http://www.omdbapi.com/?t=" + movieTitle + "&y=&plot=short&apikey=trilogy";
+    var movie = process.argv.slice(3).join("+") || "Mr.+Nobody";
+    var queryUrl = "http://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=trilogy";
+    
     axios.get(queryUrl).then(
         function (response) {
-            console.log(response.data);
-
-            var data = response.data
-            if (process.argv[3]) {
-                //HOW TO DO A LINE BREAK!!!!!!
-                console.log(`Title: ${data.Title} Year: ${data.Year} IMDB Rating: ${data.imdbRating} Rotten Tomatoes: ${data.Ratings[1].Value} Country${data.Country} Language${data.Language} Plot: ${data.Plot}`)
-            } else {
-                movieTitle = "Mr. Nobody";
-                console.log(`Title: ${data.Title} Year: ${data.Year} IMDB Rating: ${data.imdbRating} Rotten Tomatoes: ${data.Ratings[1].Value} Country${data.Country} Language${data.Language} Plot: ${data.Plot}`)
-            }
+            // console.log(response.data);
+            var data = response.data;
+                console.log(`Title: ${data.Title}\nYear: ${data.Year}\nIMDB Rating: ${data.imdbRating}\nRotten Tomatoes: ${data.Ratings[1].Value}\nCountry: ${data.Country}\nLanguage: ${data.Language}\nPlot: ${data.Plot}`);
         })
 }
 
@@ -71,5 +65,5 @@ switch (userInput) {
         doThis();
         break;
     default:
-        console.log("Please input 'concert-this', 'spotify-this-song', 'movie-this' or 'do-what-it-says'.")
+        console.log("Please input proper command.")
 }
