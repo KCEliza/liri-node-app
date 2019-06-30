@@ -18,7 +18,7 @@ function concert(display) {
         
         for (var i = 0; i < response.data.length; i++) {
                 var date = moment(response.data[i].datetime).format("MM/DD/YYYY");
-            console.log(`Venue: ${response.data[i].venue.name}\nLocation: ${response.data[i].venue.city}, ${response.data[i].venue.region}, ${date}\n\n`);
+            console.log(`Venue: ${response.data[i].venue.name}\nLocation: ${response.data[i].venue.city}, ${response.data[i].venue.region}\nDate: ${date}\n\n`);
         };
     });
 };
@@ -50,8 +50,11 @@ function spotifyThis(info) {
 
 
 // Function for the movie-this
-function movie(movie) {
-    var movie = process.argv.slice(3).join("+") || "Mr.+Nobody";
+function movie(info) {
+    var movie = process.argv.slice(3).join("+")
+    if (process.argv[3] === ""){
+        movie = "Mr.+Nobody"
+    }
     var queryUrl = "http://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=trilogy";
 
     axios.get(queryUrl).then(
@@ -70,20 +73,20 @@ function doThis() {
 
         var dataArray = data.split(", ");
         var action = dataArray[0];
-        var search = dataArray[1];
+        var searchThis = dataArray[1];
 
         switch (action) {
             case "spotify-this-song":
-                spotifyThis(search);
-                break;
-            case "concert-this":
-                concert(search);
+                spotifyThis(searchThis);
                 break;
             case "movie-this":
-                movie(search);
+                movie(searchThis);
+                break;
+            case "concert-this":
+                concert(searchThis);
                 break;
             default:
-                spotifyThis("I want it that way")
+                return console.log("Please input a proper command.");
         }
     })
 

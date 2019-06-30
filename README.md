@@ -1,53 +1,39 @@
-# liri-node-app
-concert-this
-    This will search the Bands in Town Artist Events API ("https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp") for an artist and render the following information about each event to the terminal:
-    Name of the venue
-    Venue location
-    Date of the Event (use moment to format this as "MM/DD/YYYY")
-spotify-this-song
-    Artist(s)
-    The song's name
-    A preview link of the song from Spotify
-    The album that the song is from
-    If no song is provided then your program will default 
-    to "The Sign" by Ace of Base.
-movie-this
-    * Title of the movie.
-    * Year the movie came out.
-    * IMDB Rating of the movie.
-    * Rotten Tomatoes Rating of the movie.
-    * Country where the movie was produced.
-    * Language of the movie.
-    * Plot of the movie.
-    Actors in the movie.
-    If the user doesn't type a movie in, 
-    the program will output data for the movie 'Mr. Nobody.'
-do-what-it-says
-    Using the fs Node package, LIRI will take the 
-    text inside of random.txt and then use it to call one of LIRI's commands.
-    It should run spotify-this-song for "I Want it
-    That Way," as follows the text in random.txt.
-    Edit the text in random.txt to test out the feature
-    for movie-this and concert-this.
-    
+Liri-Node-App is streamlining music and movie information through your bash or terminal,
+through a search depending on what you want to do
+You can spotify a song, get all upcoming concerts for your
+favorite band, get the information about any movie you
+would like, or just take a spin at seeing what it can do.
 
-    MAKE A FUNCTION FOR DO WHAT IT SAYS WITH A SWITCH IN IT
+Spotify:
+typing
+node liri.js spotify-this-song SONG TITLE
+wil provide multiple results listing the artist,
+title, album title and spotify link.
 
+Concert:
+typing
+node liri.js concert-this BAND NAME
+will provide the venue, city and state
+and date of the event
 
+Movie:
+typing
+node liri.js movie-this MOVIE NAME
+will provide the title, year, IMDB rating,
+rotten tomatoes rating, country it takes place in,
+languages the movie is available in, as 
+we as the plot of the movie.
 
-     { offers: [ [Object] ],
-    venue:
-     { name: 'The Plowright Theatre',
-       country: 'United Kingdom',
-       region: '',
-       city: 'Scunthorpe',
-       latitude: '53.5883217',
-       longitude: '-0.6503109' },
-    datetime: '2020-01-19T19:30:00',
-    on_sale_datetime: '2019-05-17T10:30:00',
-    description: '',
-    lineup: [ 'The' ],
-    id: '1015128679',
-    artist_id: '44916',
-    url:
-     'https://www.bandsintown.com/e/1015128679?app_id=codingbootcamp&came_from=267&utm_medium=api&utm_source=public_api&utm_campaign=event' } ]
+Do What it Says:
+typing 
+node liri.js do-what-it-says
+will provide one of the aforementioned
+functionalities depending on the infomration
+provided inside of the random.txt file
+
+Throughout this development I used, node, jquery
+js, spotify, omdb and bands in town. I developed the
+program from start to finish.
+
+You can check out a video walk through here:
+https://youtu.be/LBwS1hjtydA
