@@ -19,8 +19,12 @@ function concert(display) {
     });
 };
 
-
+// Function for spotify-this-song
 function spotifyThis(info) {
+    if(!info){
+        info = "the sign"
+    }
+    
     spotify.search({
         type: 'track',
         query: info
@@ -30,14 +34,18 @@ function spotifyThis(info) {
         if (err) {
             return console.log(err);
         }
-
-        console.log(data.tracks.items[0]);
+        var dataRetrievel = data.tracks;
+        
+       for(var i = 0; i < dataRetrievel.items.length; i++){
+           console.log(`Song Artist: ${dataRetrievel.items[i].artists[0].name}\nSong Title: ${dataRetrievel.items[i].name}\nAlbum Title: ${dataRetrievel.items[i].album.name}\nLink: ${dataRetrievel.items[i].external_urls.spotify}`)
+       }
+        
     }
     ); 
 }
 
 
-
+// Function for the movie-this
 function movie() {
     var movie = process.argv.slice(3).join("+") || "Mr.+Nobody";
     var queryUrl = "http://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=trilogy";
