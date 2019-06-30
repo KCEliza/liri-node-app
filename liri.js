@@ -7,41 +7,45 @@ var fs = require("fs");
 var userInput = process.argv[2];
 var search = process.argv.slice(3).join("%20");
 var display = process.argv.slice(3).join(" ");
+var moment = require('moment');
+
 
 
 //Function for concert-this
 function concert(display) {
-    console.log(`\n\nUpcoming concerts for ${display}\n\n`);
+    console.log(`\n\nTour dates for: ${display}\n\n`);
     axios.get("https://rest.bandsintown.com/artists/" + search + "/events?app_id=codingbootcamp").then(function (response) {
+        
         for (var i = 0; i < response.data.length; i++) {
-            console.log(`Venue: ${response.data[i].venue.name}\nLocation: ${response.data[i].venue.city}, ${response.data[i].venue.region}, ${response.data[i].venue.country}\nDate: ${response.data[i].datetime}\n\n`);
+                var date = moment(response.data[i].datetime).format("MM/DD/YYYY");
+            console.log(`Venue: ${response.data[i].venue.name}\nLocation: ${response.data[i].venue.city}, ${response.data[i].venue.region}, ${date}\n\n`);
         };
     });
 };
 
 // Function for spotify-this-song
 function spotifyThis(info) {
-    if(!info){
+    if (!info) {
         info = "the sign"
     }
-    
+
     spotify.search({
-        type: 'track',
-        query: info
-        
-    },
-    function (err, data) {
-        if (err) {
-            return console.log(err);
+            type: 'track',
+            query: info
+
+        },
+        function (err, data) {
+            if (err) {
+                return console.log(err);
+            }
+            var dataRetrievel = data.tracks;
+
+            for (var i = 0; i < dataRetrievel.items.length; i++) {
+                console.log(`Song Artist: ${dataRetrievel.items[i].artists[0].name}\nSong Title: ${dataRetrievel.items[i].name}\nAlbum Title: ${dataRetrievel.items[i].album.name}\nLink: ${dataRetrievel.items[i].external_urls.spotify}\n\n`)
+            }
+
         }
-        var dataRetrievel = data.tracks;
-        
-       for(var i = 0; i < dataRetrievel.items.length; i++){
-           console.log(`Song Artist: ${dataRetrievel.items[i].artists[0].name}\nSong Title: ${dataRetrievel.items[i].name}\nAlbum Title: ${dataRetrievel.items[i].album.name}\nLink: ${dataRetrievel.items[i].external_urls.spotify}`)
-       }
-        
-    }
-    ); 
+    );
 }
 
 
