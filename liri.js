@@ -50,7 +50,7 @@ function spotifyThis(info) {
 
 
 // Function for the movie-this
-function movie() {
+function movie(movie) {
     var movie = process.argv.slice(3).join("+") || "Mr.+Nobody";
     var queryUrl = "http://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=trilogy";
 
@@ -71,7 +71,6 @@ function doThis() {
         var dataArray = data.split(", ");
         var action = dataArray[0];
         var search = dataArray[1];
-        console.log(dataArray);
 
         switch (action) {
             case "spotify-this-song":
@@ -84,7 +83,7 @@ function doThis() {
                 movie(search);
                 break;
             default:
-                console.log("Please input proper command")
+                spotifyThis("I want it that way")
         }
     })
 
@@ -98,7 +97,7 @@ switch (userInput) {
         spotifyThis(display);
         break;
     case "movie-this":
-        movie();
+        movie(display);
         break;
     case "do-what-it-says":
         doThis();
